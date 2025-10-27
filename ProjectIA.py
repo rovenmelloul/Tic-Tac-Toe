@@ -43,5 +43,9 @@ while True:
 		print("Le joueur ", player, "gagne la partie !")
 		board_print()
 		break
+	if all(cell != case_empty for cell in board):
+		print("Match nul !")
+		board_print()
+		break
 
 	player = symboles[1] if player == symboles[0] else symboles[0]
