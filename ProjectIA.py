@@ -1,4 +1,5 @@
 import random 
+import time
 
 case_empty = " "
 
@@ -28,7 +29,8 @@ while True:
 		if player == symboles[0] :  
 			choise_player = int(input(" Choisir une case entre 1 à 9 : "))
 		if player == symboles[1] :
-			choise_player = random.randint(1,9)
+			time.sleep(0.5) # delay for respond
+			choise_player = random.randint(1,9) #random for ia player
 			
 	board[choise_player -1] = player
 
