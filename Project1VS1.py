@@ -8,6 +8,7 @@ placeholder = ("1️⃣ ", "2️⃣ ", "3️⃣ ", "4️⃣ ", "5️⃣ ", "6️
 
 player = symboles[0]
 
+# print board 
 def board_print():
 	print(" ----+----+----")
 	for i in range (9): 
@@ -19,12 +20,12 @@ def board_print():
 while True:
 	board_print()
 	choise_player = 0
-
+	#input conditions
 	while choise_player < 1 or choise_player > 9 or board[choise_player -1] != case_empty:
 		choise_player = int(input(" Choisir une case entre 1 à 9 : "))
 
 	board[choise_player -1] = player
-
+    # all win conditions 
 	if case_empty != board[0] == board [1] == board[2] \
 	or case_empty != board[3] == board [4] == board[5] \
 	or case_empty != board[6] == board [7] == board[8] \
@@ -36,6 +37,7 @@ while True:
 		print("Le joueur ", player, "gagne la partie !")
 		board_print()
 		break
+	# draw game 
 	if all(cell != case_empty for cell in board):
 		print("Match nul !")
 		board_print()
