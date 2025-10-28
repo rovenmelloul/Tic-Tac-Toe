@@ -16,7 +16,28 @@ def board_print():
 		if i % 3 == 2: # for return at the next line after 2 cases
 			print("|")
 			print(" ----+----+----")
-			
+
+def check_game():
+	#all win conditions
+	if case_empty != board[0] == board[1] == board[2] \
+	or case_empty != board[3] == board[4] == board[5] \
+	or case_empty != board[6] == board[7] == board[8] \
+	or case_empty != board[0] == board[3] == board[6] \
+	or case_empty != board[1] == board[4] == board[7] \
+	or case_empty != board[2] == board[5] == board[8] \
+	or case_empty != board[0] == board[4] == board[8] \
+	or case_empty != board[2] == board[4] == board[6]:
+		print("Le joueur", player, "gagne la partie !")
+		board_print()
+		return True
+	#draw conditions
+	if all(cell != case_empty for cell in board):
+		print("Match nul !")
+		board_print()
+		return True
+	
+	return False			
+
 while True:
 	board_print() # reapat the fonction for print in the while 
 	choise_player = 0
@@ -26,21 +47,8 @@ while True:
 
 	board[choise_player -1] = player
     # all win conditions 
-	if case_empty != board[0] == board [1] == board[2] \
-	or case_empty != board[3] == board [4] == board[5] \
-	or case_empty != board[6] == board [7] == board[8] \
-	or case_empty != board[0] == board [3] == board[6] \
-	or case_empty != board[1] == board [4] == board[7] \
-	or case_empty != board[2] == board [5] == board[8] \
-	or case_empty != board[0] == board [4] == board[8] \
-	or case_empty != board[2] == board [4] == board[6] :
-		print("Le joueur ", player, "gagne la partie !")
-		board_print() # reapat the fonction for win condition
-		break
-	# draw game 
-	if all(cell != case_empty for cell in board):
-		print("Match nul !")
-		board_print() # reapat the fonction for draw condition 
-		break
 
+	if check_game():
+			break
+	
 	player = symboles[1] if player == symboles[0] else symboles[0] # switch player 
